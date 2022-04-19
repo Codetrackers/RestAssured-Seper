@@ -2,6 +2,7 @@ package com.cydeo.day1;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class SimpleGetRequest {
@@ -9,7 +10,7 @@ public class SimpleGetRequest {
 @Test
     public void test1(){
 
-    String url="http://3.84.108.13:8000/v3/api-docs";
+    String url="http://44.201.121.105:8000/api/spartans";
     //send a get request and save response inside the Response object
     Response response = RestAssured.get(url);
     //print response status code
@@ -17,6 +18,10 @@ public class SimpleGetRequest {
 
     //print response body
     response.prettyPrint();
+
+    //verify status code is 200
+    Assertions.assertEquals(200,response.statusCode());
+
 
 }
 }
