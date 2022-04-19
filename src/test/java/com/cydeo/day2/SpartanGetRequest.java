@@ -6,8 +6,10 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.function.BooleanSupplier;
+
 public class SpartanGetRequest {
-   String url="http://3.84.108.13:8000";
+    String url = "http://3.84.108.13:8000";
 
 
  /*
@@ -17,30 +19,53 @@ public class SpartanGetRequest {
         And response content type must be application/json
      */
 
-   @Test
-    public void test1(){
+    @Test
+    public void test1() {
 
 
-       Response response = RestAssured.
-               given().
-               accept(ContentType.JSON)
-               .when()
-               .get(url + "/api/spartans");
-       //print the status code
-       System.out.println("response.statusCode() = " + response.statusCode());
-       //print the content type
-       System.out.println("response.contentType() = " + response.contentType());
+        Response response = RestAssured.
+                given().
+                accept(ContentType.JSON)
+                .when()
+                .get(url + "/api/spartans");
+        //print the status code
+        System.out.println("response.statusCode() = " + response.statusCode());
+        //print the content type
+        System.out.println("response.contentType() = " + response.contentType());
 
-       //how to test API ?
-       //verify status code is 200
-       Assertions.assertEquals(200,response.statusCode());
+        //how to test API ?
+        //verify status code is 200
+        Assertions.assertEquals(200, response.statusCode());
 
-       //verify content type is application json
-       Assertions.assertEquals("application/json",response.contentType());
-
-
+        //verify content type is application json
+        Assertions.assertEquals("application/json", response.contentType());
 
 
+    }
+ /*
+        Given accept header is application/json
+        When users send a GET request to /api/spartans/3
+        Then status code must be 200
+        And Content type must be application/json
+        And json body should contain 'Fidole'
+     */
 
-   }
+
+    @Test
+    public void test2() {
+
+        Response response = RestAssured.given().accept(ContentType.JSON)
+                .when()
+                .get(url + "/api/spartans/3");
+
+        //verify status code is 200
+        Assertions.assertEquals(200,response.getStatusCode());
+
+        //verify content type is application/json
+        Assertions.assertEquals("application/json",response.getContentType());
+
+        //verify Fidole exist in json body
+        Assertions.assertTrue(response.body().asString().contains("Fidole"));
+
+    }
 }
