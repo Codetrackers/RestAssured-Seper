@@ -41,6 +41,34 @@ given().accept(ContentType.JSON)
                         "name",equalTo("Meta"),
                         "gender",is("Female"),
                         "phone",is(1938695106));
+    }
+
+
+
+    @DisplayName("practice 2")
+    @Test
+    public void test2(){
+        given().accept(ContentType.JSON)
+                .and()
+                .pathParam("id",10423)
+                .when()
+                .get("http://api.cybertektraining.com/teacher/{id}")
+                .then()
+                .statusCode(200)
+                .and()
+                .contentType("application/json;charset=UTF-8")
+                .and()
+                .header("content-Encoding","gzip")
+                .and()
+
+                .header( "Date",notNullValue())
+                .and()
+                .body("teachers[0].firstName",is("Alexander"),
+                        "teachers[0].gender",equalTo("male"),
+                        "teachers[0].lastName",equalTo("Syrup"));
+
+
+
 
 
     }
