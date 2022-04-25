@@ -37,30 +37,29 @@ public class HRHamcrestTest extends HrTestBase {
                 .and()
                 .contentType("application/json")
                 .body("items.job_id", everyItem(equalTo("IT_PROG")))
-                .body("items.salary",everyItem(greaterThan(3000)))
-                .body("items.first_name",equalTo(names))
-                .body("items.email",containsInAnyOrder("DAUSTIN","AHUNOLD","BERNST","VPATABAL","DLORENTZ"));
+                .body("items.salary", everyItem(greaterThan(3000)))
+                .body("items.first_name", equalTo(names))
+                .body("items.email", containsInAnyOrder("DAUSTIN", "AHUNOLD", "BERNST", "VPATABAL", "DLORENTZ"));
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         //we want to chain with hamcrest and also get the response object.
         JsonPath jsonPath = given()
                 .accept(ContentType.JSON)
                 .and()
-                .queryParam("q","{\"job_id\":\"IT_PROG\"}")
+                .queryParam("q", "{\"job_id\":\"IT_PROG\"}")
                 .when()
                 .get("/employees")
                 .then()
                 .statusCode(200)
-                .body("items.job_id",everyItem(equalTo("IT_PROG")))
+                .body("items.job_id", everyItem(equalTo("IT_PROG")))
                 .extract().response().jsonPath();
 
         //extract() --> method that allow us to get response object after we use then() method.
 
         //assert that we have only 5 firstnames
-        assertThat(jsonPath.getList("items.firstname"),hasSize(5));
-
+        assertThat(jsonPath.getList("items.firstname"), hasSize(5));
 
 
     }
