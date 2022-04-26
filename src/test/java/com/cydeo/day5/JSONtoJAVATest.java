@@ -36,4 +36,19 @@ String name= (String) jsonMap.get("name");
 assertThat(name,is("Meta"));
 
   }
+
+
+  @DisplayName("Get all spartans to java structor")
+    @Test
+  public void test2(){
+      Response response=
+              get("/api/spartans")
+              .then()
+              .statusCode(200)
+              .extract().response();
+
+ List<Map<String,Object> > jsonList  =    response.as(List.class);
+      System.out.println(jsonList.get(1).get("name"));
+
+  }
 }
