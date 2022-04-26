@@ -14,7 +14,7 @@ public abstract class SpartanTestBase {
         String dbUrl = "jdbc:oracle:thin:@3.84.108.13:1521:XE";
         String dbUsername = "SP";
         String dbPassword = "SP";
-        DBUtils.createConnection(dbUrl,dbUsername,dbPassword);
+     //   DBUtils.createConnection(dbUrl,dbUsername,dbPassword);
     }
     @AfterAll
     public static void close(){

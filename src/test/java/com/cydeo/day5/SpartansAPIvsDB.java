@@ -21,6 +21,8 @@ public class SpartansAPIvsDB extends SpartanTestBase {
     @DisplayName("Compare one spartan information api vs db")
     @Test
     public void test1(){
+
+
         //we need to get api information
         Response response = given().accept(ContentType.JSON)
                 .pathParam("id", 15)
@@ -34,9 +36,8 @@ public class SpartansAPIvsDB extends SpartanTestBase {
         System.out.println(apiMap.toString());
 
         //we need to get information from database
-        //which db we will connect ?
-
-        //compare api vs db
+        //which db we will connect ? oracle so we added depedency
+        //we need connection String of spartan db
         String query = "SELECT SPARTAN_ID,NAME,GENDER,PHONE\n" +
                 "FROM SPARTANS\n" +
                 "WHERE SPARTAN_ID = 15";
@@ -50,6 +51,6 @@ public class SpartansAPIvsDB extends SpartanTestBase {
         assertThat(apiMap.get("gender"),is(dbMap.get("GENDER")));
         assertThat(apiMap.get("phone").toString(),is(dbMap.get("PHONE").toString()));
 
-   }
-
+    }
 }
+
