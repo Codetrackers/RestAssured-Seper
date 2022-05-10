@@ -1,34 +1,13 @@
 package com.cydeo.pojo;
 
-public class Spartan {
-    //to create pojo
-    //variables
-    //getter and setter
-    //toString
+public class Spartan7000 {
 
     private int id;
     private String name;
     private String gender;
     private long phone;
 
-    @Override
-    public String toString() {
-        return "Spartan{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", phone=" + phone +
-                '}';
-    }
-
-    public Spartan(int id, String name, String gender, long phone) {
-        this.id = id;
-        this.name = name;
-        this.gender = gender;
-        this.phone = phone;
-    }
-
-    public Spartan() {
+    public Spartan7000() {
     }
 
     public int getId() {
@@ -61,5 +40,22 @@ public class Spartan {
 
     public void setPhone(long phone) {
         this.phone = phone;
+    }
+
+    public Spartan7000(int id, String name, String gender, long phone) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Spartan7000{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phone=" + phone +
+                '}';
     }
 }

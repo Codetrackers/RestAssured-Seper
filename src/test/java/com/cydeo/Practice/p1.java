@@ -133,9 +133,10 @@ public class p1 extends HrTestBase {
 
         //- And Country_name are;
         //Australia,China,India,Japan,Malaysia,Singapore
-        List<String> countryName = jsonPath.getList("items.Country_name");
+        List<String> countryName = jsonPath.getList("items.country_name");
+        String expected= "Australia,China,India,Japan,Malaysia,Singapore";
         for (String each : countryName) {
-            assertTrue(each.contains("Australia,China,India,Japan,Malaysia,Singapore"));
+            assertTrue(each.contains(expected));
 
             
         }
